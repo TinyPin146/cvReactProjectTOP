@@ -15,3 +15,5 @@ I intend to write this little summary as the project unfolds so as to record my 
 
 ## Process
 1. Create basic page layout with header and footer
+2. Experiment with reusable input component and data vis.
+3. 
