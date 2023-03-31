@@ -19,4 +19,4 @@ class CV extends Component {
     }
 }
 
-export default CV
+export default CV;
