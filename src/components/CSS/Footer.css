@@ -1,0 +1,23 @@
+footer {
+
+    border-top: 3px solid rgb(161, 161, 161);
+    border-radius: 10px 10px 0 0;
+    
+    background: rgb(109, 65, 0);
+}
+
+.footer--toggle-btn {
+    margin-bottom: .2rem;
+
+    background: black;
+    border-radius:0 50%;
+}
+
+.footer--contact-details {
+    margin-top: 1rem;
+    padding-bottom: .3rem;
+}
+
+.footer--contact-details > * {
+    margin: .3rem;
+}

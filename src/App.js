@@ -1,9 +1,22 @@
+import React, {Component} from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <h1>Hello World</h1>
-  );
+import Header from './components/Header';
+import Footer from './components/Footer'
+
+class App extends Component {
+
+  render() {
+    return (
+      <div className="wrapper">
+        <Header />
+        <main>
+          
+        </main>
+        <Footer />
+      </div>
+    );  
+  }
 }
 
 export default App;
