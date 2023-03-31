@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
 import './App.css';
 
-import uniqid from 'uniqid';
-
-
 import Header from './components/Header';
-import Footer from './components/Footer'
-import Input from './components/Input';
+import Footer from './components/Footer';
+import Form from './components/Form';
+import CV from './components/CV'
 
 class App extends Component {
 
@@ -15,7 +13,8 @@ class App extends Component {
       <div className="wrapper">
         <Header />
         <main>
-          <Input type='text' name='name' id={uniqid()}/>
+          <Form />
+          <CV />
         </main>
         <Footer />
       </div>
