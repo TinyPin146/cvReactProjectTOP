@@ -12,6 +12,10 @@ I intend to write this little summary as the project unfolds so as to record my 
       1. General info
       2. Educational experience
       3. Practical experience
+2. My main problem im facing is where the states should live.
+   1. If the input's state is stored at the level of the Input comp., I need to find a way to lift it to upper level comp.s
+   2. If the state lives in an upper parent then i need to pass a callback fn as prop so the child comp. can update the parents state.
+   3. **The 2nd option seems to be a better option**
 
 ## Process
 1. Create basic page layout with header and footer
