@@ -16,7 +16,9 @@ I intend to write this little summary as the project unfolds so as to record my 
    1. If the input's state is stored at the level of the Input comp., I need to find a way to lift it to upper level comp.s
    2. If the state lives in an upper parent then i need to pass a callback fn as prop so the child comp. can update the parents state.
    3. **The 2nd option seems to be a better option**
-
+3. Okay, now i will have to create a mock implementation of an "input-to-CV" render
+4. And after step #3 i will have to create the whole app (seems like repetition, but we will see.)
+   1. One challenge i see is conditional rendering based on form types (basic data, experience, education)
 ## Process
 1. Create basic page layout with header and footer
 2. Create input component

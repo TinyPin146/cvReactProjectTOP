@@ -12,34 +12,37 @@ class App extends Component {
     super(props) 
 
     this.state = {
-        inputs: []
+        inputStates: []
     }
     this.updateState = this.updateState.bind(this)
 }
 
 updateState(childState) {
-  const currentInputObjects = this.state.inputs;
-  const inputIDs = currentInputObjects.map(input => input.id)
+  const {inputStates} = this.state;
+  const inputIDs = inputStates.map(input => input.id)
   if (inputIDs.includes(childState.id)) {
-      const inputIndex = currentInputObjects.findIndex(input => input.id === childState.id)
-      const updatedInputs = currentInputObjects.splice(inputIndex, 1, childState)
-      this.setState({ inputs: updatedInputs});
-      console.log(this.state.inputs);
+      const updatedInputs = inputStates.map(state => {
+        if (state.id === childState.id) return childState;
+        return state;
+      });
+      this.setState({ inputStates: updatedInputs});
       return;
   };
 
-  this.setState({ inputs: [...this.state.inputs, childState] });
-  console.log(this.state.inputs);
+  this.setState({ inputStates: [...this.state.inputStates, childState] });
 }
 
 
   render() {
+    const {inputStates} = this.state;
+
+    console.log(inputStates);
     return (
       <div className="wrapper">
         <Header />
         <main>
           <Form updateParentState={this.updateState} />
-          <CV />
+          <CV formData={inputStates}/>
         </main>
         <Footer />
       </div>

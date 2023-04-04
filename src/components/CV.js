@@ -2,18 +2,16 @@ import React, {Component} from "react";
 import './CSS/CV.css'
 
 class CV extends Component {
-    constructor(props) {
-        super(props)
-        
-        this.state = {
-
-        }
-    }
 
     render() {
+        const {formData} = this.props;
+        const formDataElements = formData.map(data => {
+            return <p key={data.id}>{data.text}</p>
+        })
+
         return (
-            <div>
-                <p>CV placeholder</p>
+            <div className="CV">
+                {formDataElements}
             </div>
         )
     }

@@ -27,11 +27,12 @@ class Input extends Component {
       };
     
     render() {
-        const {id, name, type} = this.props
+        const {name, type} = this.props;
+        const {text, id} = this.state;
         return (
             <div className="CV--input">
                 <label htmlFor={id}>{[name.split('')[0].toUpperCase(), name.split('').splice(1).join('')].join('')}:</label>
-                <input type={type} name={name} id={id} onChange={this.handleChange}></input>
+                <input value={text} type={type} name={name} id={id} onChange={this.handleChange}></input>
             </div>
         )
     }

@@ -14,7 +14,8 @@ class Form extends Component {
     render() {
         return(
             <form>
-                <Input updateParentState={this.props.updateParentState} type='text' name='name' />
+                <Input updateParentState={this.props.updateParentState} type='text' name='first-name' />
+                <Input updateParentState={this.props.updateParentState} type='text' name='last-name' />
                 <button>Done</button>
             </form>
         )
