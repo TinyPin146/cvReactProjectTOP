@@ -12,37 +12,43 @@ class App extends Component {
     super(props) 
 
     this.state = {
-        inputStates: []
+        cvDataStates: []
     }
     this.updateState = this.updateState.bind(this)
 }
 
-updateState(childState) {
-  const {inputStates} = this.state;
-  const inputIDs = inputStates.map(input => input.id)
-  if (inputIDs.includes(childState.id)) {
-      const updatedInputs = inputStates.map(state => {
-        if (state.id === childState.id) return childState;
-        return state;
-      });
-      this.setState({ inputStates: updatedInputs});
-      return;
-  };
+updateState(formState) {
+  const {cvDataStates} = this.state;
+  const formIDs = cvDataStates.map(cvForm => cvForm.id)
 
-  this.setState({ inputStates: [...this.state.inputStates, childState] });
+  if(formIDs.includes(formState.id)) {
+    const updatedCVData = cvDataStates.map(cvForm => {
+      if(cvForm.id === formState.id) return formState;
+      return cvForm;
+    })
+    this.setState({cvDataStates: updatedCVData});
+    return;
+  }
+
+  this.setState({cvDataStates: [...cvDataStates, formState]});
 }
 
 
   render() {
-    const {inputStates} = this.state;
+    const {cvDataStates} = this.state;
 
-    console.log(inputStates);
     return (
       <div className="wrapper">
         <Header />
         <main>
-          <Form updateParentState={this.updateState} />
-          <CV formData={inputStates}/>
+          <section className='forms'>
+            <Form formType='basicDataForm' updateParentState={this.updateState} />
+            <Form formType='educationDataForm' updateParentState={this.updateState} />
+            <Form formType='workDataForm' updateParentState={this.updateState} />
+          </section>
+          <section className='CV'>
+            <CV formData={cvDataStates}/>
+          </section>
         </main>
         <Footer />
       </div>

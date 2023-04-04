@@ -29,9 +29,22 @@ class Input extends Component {
     render() {
         const {name, type} = this.props;
         const {text, id} = this.state;
+
+        if (type === 'textarea') {
+            return (
+                <div className="CV--input">
+                <label htmlFor={id}>{[name.split('')[0].toUpperCase(), name.split('').slice(1).join('')].join('').replace(/-/g
+                , () => " ")}:</label>
+                <textarea value={text} type={type} name={name} id={id} onChange={this.handleChange}></textarea>
+            </div>
+
+            )
+        }
+
         return (
             <div className="CV--input">
-                <label htmlFor={id}>{[name.split('')[0].toUpperCase(), name.split('').splice(1).join('')].join('')}:</label>
+                <label htmlFor={id}>{[name.split('')[0].toUpperCase(), name.split('').slice(1).join('')].join('').replace(/-/g
+                , () => " ")}:</label>
                 <input value={text} type={type} name={name} id={id} onChange={this.handleChange}></input>
             </div>
         )

@@ -5,8 +5,10 @@ class CV extends Component {
 
     render() {
         const {formData} = this.props;
-        const formDataElements = formData.map(data => {
-            return <p key={data.id}>{data.text}</p>
+        const formDataElements = formData.map(formData => {
+            return formData.inputStates.map(inputData => {
+                return <p key={inputData.id}>{inputData.text}</p>
+            })
         })
 
         return (

@@ -17,8 +17,10 @@ I intend to write this little summary as the project unfolds so as to record my 
    2. If the state lives in an upper parent then i need to pass a callback fn as prop so the child comp. can update the parents state.
    3. **The 2nd option seems to be a better option**
 3. Okay, now i will have to create a mock implementation of an "input-to-CV" render
+   1. Challenge: I needed to divide the state lifting. So on input change the forms state updates. And on form submit the App's state gets the form state and rerenders the CV.
 4. And after step #3 i will have to create the whole app (seems like repetition, but we will see.)
    1. One challenge i see is conditional rendering based on form types (basic data, experience, education)
+5. A better approach would have been to lay out the whole app first in a static manner
 ## Process
 1. Create basic page layout with header and footer
 2. Create input component

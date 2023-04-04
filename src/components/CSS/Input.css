@@ -1,0 +1,16 @@
+.forms {
+    margin: .3rem .6rem;
+}
+
+.CV--input {
+    border: 1px solid white;
+    padding: .3rem;
+}
+
+input, textarea {
+    border: none;
+}
+
+label {
+    display: block;
+}
