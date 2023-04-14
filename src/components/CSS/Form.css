@@ -1,0 +1,15 @@
+.forms {
+    margin: .3rem .6rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: .3rem;
+    margin-bottom: 1rem;
+
+    background-color: orange;
+}

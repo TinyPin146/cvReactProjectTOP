@@ -4,6 +4,7 @@ footer {
     border-radius: 10px 10px 0 0;
     
     background: rgb(109, 65, 0);
+    will-change: display;
 }
 
 .footer--toggle-btn {

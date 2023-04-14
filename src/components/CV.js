@@ -1,22 +1,34 @@
-import React, {Component} from "react";
-import './CSS/CV.css'
+import React, { Component } from 'react';
+import './CSS/CV.css';
+import BasicCVSection from './BasicCVSection';
 
+const BASIC_DATA_FORM_ROLE = 'basicDataForm';
+const EDUCATION_DATA_FORM_ROLE = 'educationDataForm';
+const WORK_DATA_FORM_ROLE = 'workDataForm';
 class CV extends Component {
+  render() {
+    const { cvData } = this.props;
 
-    render() {
-        const {formData} = this.props;
-        const formDataElements = formData.map(formData => {
-            return formData.inputStates.map(inputData => {
-                return <p key={inputData.id}>{inputData.text}</p>
-            })
-        })
+    let basicData = null;
+    const educationDataForm = [];
+    const workDataForm = [];
 
-        return (
-            <div className="CV">
-                {formDataElements}
-            </div>
-        )
-    }
+    cvData.forEach((formDataObj) => {
+      if (formDataObj.role === BASIC_DATA_FORM_ROLE) basicData = formDataObj;
+      if (formDataObj.role === EDUCATION_DATA_FORM_ROLE)
+        educationDataForm.push(formDataObj);
+      if (formDataObj.role === WORK_DATA_FORM_ROLE)
+        workDataForm.push(formDataObj);
+    });
+
+    console.log({ basicData, educationDataForm });
+
+    return (
+      <div className="CV">
+        <BasicCVSection data={basicData || 'No data'} />
+      </div>
+    );
+  }
 }
 
 export default CV;
