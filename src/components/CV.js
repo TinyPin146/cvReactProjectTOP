@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './CSS/CV.css';
 import BasicCVSection from './BasicCVSection';
 import EducationCVSection from './EducationCVSection';
+import ExperienceCVSection from './ExperienceCVSection';
 
 const BASIC_DATA_FORM_ROLE = 'basicDataForm';
 const EDUCATION_DATA_FORM_ROLE = 'educationDataForm';
@@ -15,6 +16,7 @@ class CV extends Component {
     const workDataForm = [];
 
     let educationSectionElemsArray = [];
+    let workExperienceSectionElemsArray = [];
 
     cvData.forEach((formDataObj) => {
       if (formDataObj.role === BASIC_DATA_FORM_ROLE) basicData = formDataObj;
@@ -38,8 +40,11 @@ class CV extends Component {
     return (
       <div className="CV">
         <BasicCVSection data={basicData || 'No data'} />
-        <div className="education-CV-Data">
+        <div className="education-CV-wrapper">
           {educationSectionElemsArray.map((comp) => comp)}
+        </div>
+        <div>
+          <ExperienceCVSection />
         </div>
       </div>
     );
