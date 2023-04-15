@@ -14,6 +14,8 @@ class CV extends Component {
     const educationDataForms = [];
     const workDataForm = [];
 
+    let educationSectionElemsArray = [];
+
     cvData.forEach((formDataObj) => {
       if (formDataObj.role === BASIC_DATA_FORM_ROLE) basicData = formDataObj;
       if (formDataObj.role === EDUCATION_DATA_FORM_ROLE)
@@ -22,24 +24,22 @@ class CV extends Component {
         workDataForm.push(formDataObj);
     });
 
-
-    let educationSectionElemsArray = []
     if (educationDataForms.length > 0) {
-      educationSectionElemsArray = educationDataForms.map((eduDataForm, i) => {
-        return <EducationCVSection key={i} data={eduDataForm}/> ;
-      });
+      educationSectionElemsArray = educationDataForms.map((eduDataForm, i) => (
+        <EducationCVSection key={i} data={eduDataForm} />
+      ));
     } else {
-      educationSectionElemsArray.push(<EducationCVSection key={'nodata'} data={'No data'}/>);
+      educationSectionElemsArray.push(
+        <EducationCVSection key="nodata" data="No data" />
+      );
     }
-    console.log({educationSectionElemsArray});
+    console.log({ educationSectionElemsArray });
 
     return (
       <div className="CV">
         <BasicCVSection data={basicData || 'No data'} />
-        <div className='education-CV-Data'>
-          {educationSectionElemsArray.map((comp) => {
-            return comp
-          })}
+        <div className="education-CV-Data">
+          {educationSectionElemsArray.map((comp) => comp)}
         </div>
       </div>
     );

@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 export default class BasicCVSection extends Component {
   render() {
     const { data } = this.props;
-
     const inputData = data.inputStates || '';
 
     const basicData = {
@@ -26,8 +25,8 @@ export default class BasicCVSection extends Component {
       <section className="basic-CV-section">
         <h2>{basicData.firstName}</h2>
         <h2>{basicData.lastName}</h2>
-        <h2>{basicData.emailAddress}</h2>
-        <h2>{basicData.phoneNumber}</h2>
+        <h3>{basicData.emailAddress}</h3>
+        <h3>{basicData.phoneNumber}</h3>
       </section>
     );
   }
