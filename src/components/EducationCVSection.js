@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class EducationCVSection extends Component {
   render() {
-    const { data, key } = this.props;
+    const { data } = this.props;
     const inputData = data.inputStates ? data.inputStates : data;
 
     const eduData = {
@@ -25,7 +25,7 @@ export default class EducationCVSection extends Component {
     console.log({ inputData });
 
     return (
-      <section className="edu-CV-section" key={key}>
+      <section className="edu-CV-section">
         <h3>{eduData.schoolName}</h3>
         <h3>{eduData.titleOfStudy}</h3>
         <h4>{eduData.startOfStudy}</h4>

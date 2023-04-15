@@ -26,6 +26,7 @@ class CV extends Component {
         workDataForm.push(formDataObj);
     });
 
+    // * Creating education comps. based on how many there were
     if (educationDataForms.length > 0) {
       educationSectionElemsArray = educationDataForms.map((eduDataForm, i) => (
         <EducationCVSection key={i} data={eduDataForm} />
@@ -35,16 +36,26 @@ class CV extends Component {
         <EducationCVSection key="nodata" data="No data" />
       );
     }
-    console.log({ educationSectionElemsArray });
+
+    // * Creating workExp. comps. based on how many there were
+    if (workExperienceSectionElemsArray.length > 0) {
+      workExperienceSectionElemsArray = workDataForm.map((workDataForm, i) => (
+        <ExperienceCVSection key={i} data={workDataForm} />
+      ));
+    } else {
+      workExperienceSectionElemsArray.push(
+        <ExperienceCVSection key="nodata" data="No data" />
+      );
+    }
 
     return (
       <div className="CV">
         <BasicCVSection data={basicData || 'No data'} />
         <div className="education-CV-wrapper">
-          {educationSectionElemsArray.map((comp) => comp)}
+          {educationSectionElemsArray.map(comp => comp)}
         </div>
-        <div>
-          <ExperienceCVSection />
+        <div className='work-experience-CV-wrapper'>
+          {workExperienceSectionElemsArray.map(comp => comp)}
         </div>
       </div>
     );
