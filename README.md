@@ -21,9 +21,11 @@ I intend to write this little summary as the project unfolds so as to record my 
 4. And after step #3 i will have to create the whole app (seems like repetition, but we will see.)
    1. One challenge i see is conditional rendering based on form types (basic data, experience, education)
 5. A better approach would have been to lay out the whole app first in a static manner
+6. Now i need to create 3 comp.s for the CV component
 ## Process
 1. Create basic page layout with header and footer
 2. Create input component
 3. Create form component
 4. Experiment with reusable input component and data vis.
-5. 
+5. Created CV component. Realized i need three more components. 
+6. Created basicCVSection comp. data now shows up from those form fields

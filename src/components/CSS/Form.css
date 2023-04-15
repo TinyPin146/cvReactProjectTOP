@@ -10,6 +10,8 @@ form {
 
     padding: .3rem;
     margin-bottom: 1rem;
+    border: 1px solid gray;
+    border-radius: 5px;
 
-    background-color: orange;
+    background-color: rgba(201, 135, 12, .6);
 }
