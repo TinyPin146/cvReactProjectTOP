@@ -22,14 +22,25 @@ class CV extends Component {
         workDataForm.push(formDataObj);
     });
 
-    console.log({ basicData, educationDataForm: educationDataForms });
+
+    let educationSectionElemsArray = []
+    if (educationDataForms.length > 0) {
+      educationSectionElemsArray = educationDataForms.map((eduDataForm, i) => {
+        return <EducationCVSection key={i} data={eduDataForm}/> ;
+      });
+    } else {
+      educationSectionElemsArray.push(<EducationCVSection key={'nodata'} data={'No data'}/>);
+    }
+    console.log({educationSectionElemsArray});
 
     return (
       <div className="CV">
         <BasicCVSection data={basicData || 'No data'} />
-        {educationDataForms.forEach(eduDataForm => {
-          return <EducationCVSection data={eduDataForm}/>
-        })}
+        <div className='education-CV-Data'>
+          {educationSectionElemsArray.map((comp) => {
+            return comp
+          })}
+        </div>
       </div>
     );
   }
