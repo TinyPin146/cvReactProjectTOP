@@ -11,8 +11,8 @@ export default class ExperienceCVSection extends Component {
             companyName: 'The name of the company',
             positionTitle: 'The title of your position there',
             roleDescription: 'The description of your role',
-            startOfWork: null,
-            finishOfWork: null,
+            startOfWork: 'Start of work',
+            finishOfWork: 'Finish of work',
         }
 
         if (Array.isArray(inputData)) {
@@ -29,12 +29,16 @@ export default class ExperienceCVSection extends Component {
       
 
         return (
-            <section className="workExp-CV-section">
-                <h3>{workData.companyName}</h3>
-                <h3>{workData.positionTitle}</h3>
-                <h4>{workData.roleDescription}</h4>
-                <h4>{workData.startOfWork}</h4>
-                <h4>{workData.finishOfWork}</h4>
+            <section className="workExp-CV-section CV-content-section">
+                <div className="content center-column">
+                    <h3>{workData.companyName}</h3>
+                    <h3>{workData.positionTitle}</h3>
+                    <h4>{workData.roleDescription}</h4>
+                </div>
+                <div className="date center-column">
+                    <h4>{workData.startOfWork}</h4>
+                    <h4>{workData.finishOfWork}</h4>
+                </div>
             </section>
         )
     }

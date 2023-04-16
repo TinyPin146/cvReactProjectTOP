@@ -18,7 +18,6 @@
 }
 
 .basic-CV-section {
-    border: 1px solid red;
     padding: .8em;
 
     display: flex;
@@ -59,7 +58,49 @@
 .content-CV-wrapper {
     grid-area: contentData;
 
+    width: 100%;
+
     display: flex;
     flex-flow: column nowrap;
+    align-items: center;
+}
+
+.work-experience-CV-wrapper, .work-experience-CV-wrapper > *, .education-CV-wrapper > * {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.work-experience-CV-wrapper, .education-CV-wrapper {
+    color: black;
+    width: 95%;
+    background-color: aliceblue;
+    margin: 1rem;
+}
+
+.CV-content-section {
+    width: 100%;
+
+    padding: 1rem;
+
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas: 
+    'dateColumn contentColumn'
+    'dateColumn contentColumn';
+    justify-content: center;
+    align-content: center;
+}
+.CV-content-section > .content {
+    grid-area: contentColumn;
+}
+.CV-content-section > .date {
+    grid-area: dateColumn;
+}
+
+.center-column {
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
