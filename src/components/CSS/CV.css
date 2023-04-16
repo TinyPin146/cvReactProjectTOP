@@ -17,6 +17,38 @@
     ;
 }
 
+.basic-CV-section {
+    border: 1px solid red;
+    padding: .8em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    background-color: aliceblue;
+    color: black;
+}
+
+.basic-CV-section .name, .basic-CV-section .contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .6ch;
+}
+.basic-CV-section .contact {
+    flex-direction: column;
+}
+
+.basic-CV-section h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.basic-CV-section h3 {
+    font-size: 1.2rem;
+}
+
 .left-style {
     grid-area: styleColumn;
 
@@ -26,4 +58,8 @@
 
 .content-CV-wrapper {
     grid-area: contentData;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
 }

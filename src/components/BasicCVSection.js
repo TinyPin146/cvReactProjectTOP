@@ -23,10 +23,17 @@ export default class BasicCVSection extends Component {
 
     return (
       <section className="basic-CV-section">
-        <h2>{basicData.firstName}</h2>
-        <h2>{basicData.lastName}</h2>
-        <h3>{basicData.emailAddress}</h3>
-        <h3>{basicData.phoneNumber}</h3>
+        <div className='image'>
+          <img src='../../assets/images/P1080192_07.jpg' alt='Applicant portrait'></img>
+        </div>
+        <div className='name'>
+          <h2>{basicData.firstName}</h2>
+          <h2>{basicData.lastName}</h2>
+        </div>
+        <div className='contact'>
+          <h3>{basicData.emailAddress}</h3>
+          <h3>{basicData.phoneNumber}</h3>
+        </div>
       </section>
     );
   }
