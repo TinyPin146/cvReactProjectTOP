@@ -13,7 +13,7 @@ class CV extends Component {
 
     let basicData = null;
     const educationDataForms = [];
-    const workDataForm = [];
+    const workDataForms = [];
 
     let educationSectionElemsArray = [];
     let workExperienceSectionElemsArray = [];
@@ -23,7 +23,7 @@ class CV extends Component {
       if (formDataObj.role === EDUCATION_DATA_FORM_ROLE)
         educationDataForms.push(formDataObj);
       if (formDataObj.role === WORK_DATA_FORM_ROLE)
-        workDataForm.push(formDataObj);
+        workDataForms.push(formDataObj);
     });
 
     // * Creating education comps. based on how many there were
@@ -38,8 +38,8 @@ class CV extends Component {
     }
 
     // * Creating workExp. comps. based on how many there were
-    if (workExperienceSectionElemsArray.length > 0) {
-      workExperienceSectionElemsArray = workDataForm.map((workDataForm, i) => (
+    if (workDataForms.length > 0) {
+      workExperienceSectionElemsArray = workDataForms.map((workDataForm, i) => (
         <ExperienceCVSection key={i} data={workDataForm} />
       ));
     } else {
@@ -49,15 +49,18 @@ class CV extends Component {
     }
 
     return (
-      <div className="CV">
+      <section className="CV">
         <BasicCVSection data={basicData || 'No data'} />
-        <div className="education-CV-wrapper">
-          {educationSectionElemsArray.map(comp => comp)}
+        <div className='left-style'></div>
+        <div className="content-CV-wrapper">
+          <div className="education-CV-wrapper">
+            {educationSectionElemsArray.map(comp => comp)}
+          </div>
+          <div className='work-experience-CV-wrapper'>
+            {workExperienceSectionElemsArray.map(comp => comp)}
+          </div>
         </div>
-        <div className='work-experience-CV-wrapper'>
-          {workExperienceSectionElemsArray.map(comp => comp)}
-        </div>
-      </div>
+      </section>
     );
   }
 }

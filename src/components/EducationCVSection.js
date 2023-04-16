@@ -22,8 +22,6 @@ export default class EducationCVSection extends Component {
       });
     }
 
-    console.log({ inputData });
-
     return (
       <section className="edu-CV-section">
         <h3>{eduData.schoolName}</h3>

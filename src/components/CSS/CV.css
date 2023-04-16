@@ -1,0 +1,29 @@
+.CV {
+    width: 85%;
+    height: 100%;
+
+    margin: .3rem .6rem;
+    padding: 1.5rem;
+
+    background-image: url(../../../assets/images/pexels-nothing-ahead-3571551.jpg);
+    background-size: cover;
+
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr 4fr;
+    grid-template-areas: 
+    'basicData contentData'
+    'styleColumn contentData'
+    ;
+}
+
+.left-style {
+    grid-area: styleColumn;
+
+    background-color: aliceblue;
+    opacity: .8;
+}
+
+.content-CV-wrapper {
+    grid-area: contentData;
+}

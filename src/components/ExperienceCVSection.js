@@ -5,6 +5,7 @@ export default class ExperienceCVSection extends Component {
     render() {
         const { data } = this.props;
         const inputData = data.inputStates ? data.inputStates : data;
+        console.log(inputData);
 
         const workData = {
             companyName: 'The name of the company',
@@ -23,7 +24,6 @@ export default class ExperienceCVSection extends Component {
                 workData.startOfWork = input.text;
             if (input.for === 'finish-of-work')
             workData.finishOfWork = input.text;
-
             });
           }
       

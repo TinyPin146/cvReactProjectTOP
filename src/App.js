@@ -51,9 +51,7 @@ class App extends Component {
             />
             <Form formType="workDataForm" updateCVState={this.updateState} />
           </section>
-          <section className="CV">
-            <CV cvData={cvData} />
-          </section>
+          <CV cvData={cvData} />
         </main>
         <Footer />
       </div>
