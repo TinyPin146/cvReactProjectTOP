@@ -8,6 +8,7 @@ const BASIC_DATA_FORM_ROLE = 'basicDataForm';
 const EDUCATION_DATA_FORM_ROLE = 'educationDataForm';
 const WORK_DATA_FORM_ROLE = 'workDataForm';
 class CV extends Component {
+
   render() {
     const { cvData } = this.props;
 
@@ -50,7 +51,7 @@ class CV extends Component {
 
     return (
       <section className="CV">
-        <BasicCVSection data={basicData || 'No data'} />
+        <BasicCVSection  data={basicData || 'No data'} />
         <div className='left-style'></div>
         <div className="content-CV-wrapper">
           <div className='work-experience-CV-wrapper'>

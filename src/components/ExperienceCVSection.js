@@ -1,6 +1,13 @@
 import React, {Component} from "react";
 
 export default class ExperienceCVSection extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            isHovered: false,
+        }
+    }
 
     render() {
         const { data } = this.props;
@@ -29,16 +36,17 @@ export default class ExperienceCVSection extends Component {
       
 
         return (
-            <section className="workExp-CV-section CV-content-section">
+            <section onMouseEnter={() => this.setState({isHovered: true})} onMouseLeave={() => this.setState({isHovered: false})} className="workExp-CV-section CV-content-section">
                 <div className="content center-column">
                     <h3>{workData.companyName}</h3>
                     <h3>{workData.positionTitle}</h3>
                     <h4>{workData.roleDescription}</h4>
                 </div>
                 <div className="date center-column">
-                    <h4>{workData.startOfWork}</h4>
+                    <h4>{workData.startOfWork} -</h4>
                     <h4>{workData.finishOfWork}</h4>
                 </div>
+                <button className={this.state.isHovered ? '' : 'hidden'}>Add new section</button>
             </section>
         )
     }

@@ -29,7 +29,7 @@ export default class EducationCVSection extends Component {
           <h3>{eduData.titleOfStudy}</h3>
         </div>
         <div className='date center-column'>
-          <h4>{eduData.startOfStudy}</h4>
+          <h4>{eduData.startOfStudy} -</h4>
           <h4>{eduData.finishOfStudy}</h4>
         </div>
       </section>
