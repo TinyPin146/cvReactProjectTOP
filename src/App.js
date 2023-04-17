@@ -7,16 +7,33 @@ import Footer from './components/Footer';
 import Form from './components/Form';
 import CV from './components/CV';
 
+import uniqid from 'uniqid';
+import { element } from 'prop-types';
+
 // * App component
 class App extends Component {
   // * Class constructor
   constructor(props) {
     super(props);
 
+    this.addSection = this.addSection.bind(this);
+    this.updateState = this.updateState.bind(this);
+
     this.state = {
       cvData: [],
+      workFormElems: [<Form key={uniqid()} formType="workDataForm" updateCVState={this.updateState} />],
+      eduFormElems: [<Form key={uniqid()} formType="educationDataForm" updateCVState={this.updateState}/>],
     };
-    this.updateState = this.updateState.bind(this);
+  }
+
+  addSection(type) {
+    console.log(`Add ${type} section`);
+    if (type === 'education') {
+      this.setState({eduFormElems: [...this.state.eduFormElems, <Form key={uniqid()} formType="educationDataForm" updateCVState={this.updateState}/>]})
+    }
+    if (type === 'work') {
+      this.setState({workFormElems: [...this.state.workFormElems, <Form key={uniqid()} formType="workDataForm" updateCVState={this.updateState} />]})
+    } 
   }
 
   // * Update CV info state
@@ -36,8 +53,10 @@ class App extends Component {
     this.setState({ cvData: [...cvDataStates, formState] });
   }
 
+
   render() {
-    const { cvData } = this.state;
+    const { cvData, eduFormElems, workFormElems } = this.state;
+
 
     return (
       <div className="wrapper">
@@ -45,13 +64,15 @@ class App extends Component {
         <main>
           <section className="forms">
             <Form formType="basicDataForm" updateCVState={this.updateState} />
-            <Form
+            {/* <Form formType="workDataForm" updateCVState={this.updateState} /> */}
+            {workFormElems.map(element => element)}
+            {/* <Form
               formType="educationDataForm"
               updateCVState={this.updateState}
-            />
-            <Form formType="workDataForm" updateCVState={this.updateState} />
+            /> */}
+            {eduFormElems.map(element => element)}
           </section>
-          <CV cvData={cvData} />
+          <CV addSection={this.addSection} cvData={cvData} />
         </main>
         <Footer />
       </div>

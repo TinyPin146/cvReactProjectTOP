@@ -46,13 +46,14 @@ export default class Form extends Component {
   render() {
     const { formType, updateCVState } = this.props;
     const {isHidden} = this.state;
+    const formState = this.state;
 
     const basicDataForm = (
       <form
         onSubmit={(e) => {
           e.preventDefault();
           this.setState({isHidden: true});
-          updateCVState(this.state);
+          updateCVState(formState);
         }}
         className={isHidden ? 'hidden' : ''}
       >
@@ -85,7 +86,7 @@ export default class Form extends Component {
         onSubmit={(e) => {
           e.preventDefault();
           this.setState({isHidden: true});
-          updateCVState(this.state);
+          updateCVState(formState);
         }}
         className={isHidden ? 'hidden' : ''}
       >
@@ -118,7 +119,7 @@ export default class Form extends Component {
         onSubmit={(e) => {
           e.preventDefault();
           this.setState({isHidden: true});
-          updateCVState(this.state);
+          updateCVState(formState);
         }}
         className={isHidden ? 'hidden' : ''}
       >

@@ -10,7 +10,7 @@ const WORK_DATA_FORM_ROLE = 'workDataForm';
 class CV extends Component {
 
   render() {
-    const { cvData } = this.props;
+    const { cvData, addSection } = this.props;
 
     let basicData = null;
     const educationDataForms = [];
@@ -30,7 +30,7 @@ class CV extends Component {
     // * Creating education comps. based on how many there were
     if (educationDataForms.length > 0) {
       educationSectionElemsArray = educationDataForms.map((eduDataForm, i) => (
-        <EducationCVSection key={i} data={eduDataForm} />
+        <EducationCVSection addSection={addSection}  key={i} data={eduDataForm} />
       ));
     } else {
       educationSectionElemsArray.push(
@@ -41,7 +41,7 @@ class CV extends Component {
     // * Creating workExp. comps. based on how many there were
     if (workDataForms.length > 0) {
       workExperienceSectionElemsArray = workDataForms.map((workDataForm, i) => (
-        <ExperienceCVSection key={i} data={workDataForm} />
+        <ExperienceCVSection addSection={() => addSection('work')} key={i} data={workDataForm} />
       ));
     } else {
       workExperienceSectionElemsArray.push(
