@@ -12,6 +12,7 @@ export default class EducationCVSection extends Component {
   render() {
     const { data } = this.props;
     const inputData = data.inputStates ? data.inputStates : data;
+    const toggleFormVis = data.toggleFormVis;
 
     const eduData = {
       schoolName: 'The name of the school',
@@ -41,7 +42,7 @@ export default class EducationCVSection extends Component {
           <h4>{eduData.finishOfStudy}</h4>
         </div>
         <div className={this.state.isHovered ? 'buttons' : 'buttons hidden'}>
-          <button>Edit this section</button>
+          <button onClick={() => toggleFormVis()}>Edit this section</button>
           <button>Add new section</button>
         </div>
       </section>

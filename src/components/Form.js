@@ -15,8 +15,14 @@ export default class Form extends Component {
       inputStates: [],
       id: uniqid(),
       role: formType,
+      isHidden: false,
+      toggleFormVis: this.toggleFormVis.bind(this),
     };
     this.updateFormState = this.updateFormState.bind(this);
+  }
+
+  toggleFormVis() {
+    this.setState({isHidden: !!this.isHidden});
   }
 
   updateFormState(childState) {
@@ -39,13 +45,16 @@ export default class Form extends Component {
 
   render() {
     const { formType, updateCVState } = this.props;
+    const {isHidden} = this.state;
 
     const basicDataForm = (
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          this.setState({isHidden: true});
           updateCVState(this.state);
         }}
+        className={isHidden ? 'hidden' : ''}
       >
         <Input
           updateFormState={this.updateFormState}
@@ -75,8 +84,10 @@ export default class Form extends Component {
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          this.setState({isHidden: true});
           updateCVState(this.state);
         }}
+        className={isHidden ? 'hidden' : ''}
       >
         <Input
           updateFormState={this.updateFormState}
@@ -106,8 +117,10 @@ export default class Form extends Component {
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          this.setState({isHidden: true});
           updateCVState(this.state);
         }}
+        className={isHidden ? 'hidden' : ''}
       >
         <Input
           updateFormState={this.updateFormState}

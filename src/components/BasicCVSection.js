@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { transform } from 'typescript';
 
 export default class BasicCVSection extends Component {
   constructor(props) {
@@ -13,6 +12,7 @@ export default class BasicCVSection extends Component {
   render() {
     const { data } = this.props;
     const inputData = data.inputStates || '';
+    const toggleFormVis = data.toggleFormVis;
 
     const basicData = {
       firstName: 'Your first name',
@@ -44,7 +44,7 @@ export default class BasicCVSection extends Component {
           <h3>{basicData.phoneNumber}</h3>
         </div>
         <div className={this.state.isHovered ? 'buttons' : 'buttons hidden'}>
-          <button>Edit this section</button>
+          <button onClick={() => toggleFormVis()}>Edit this section</button>
         </div>
 
       </section>

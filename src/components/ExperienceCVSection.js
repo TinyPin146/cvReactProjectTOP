@@ -12,7 +12,7 @@ export default class ExperienceCVSection extends Component {
     render() {
         const { data } = this.props;
         const inputData = data.inputStates ? data.inputStates : data;
-        console.log(inputData);
+        const toggleFormVis = data.toggleFormVis;
 
         const workData = {
             companyName: 'The name of the company',
@@ -47,7 +47,7 @@ export default class ExperienceCVSection extends Component {
                     <h4>{workData.finishOfWork}</h4>
                 </div>
                 <div className={this.state.isHovered ? 'buttons' : 'buttons hidden'}>
-                    <button>Edit this section</button>
+                    <button onClick={() => toggleFormVis()}>Edit this section</button>
                     <button>Add new section</button>
                 </div>
             </section>

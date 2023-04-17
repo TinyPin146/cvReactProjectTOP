@@ -5,6 +5,7 @@
 I aim to create a basic CV generator site in order to learn the basics of the React framework.
 I intend to write this little summary as the project unfolds so as to record my struggles and thought-process almost real time.
 
+---
 ## Challanges and thoughts
 1. My first job is to decide what components will i need on my page.
    1. I might need only 1 input component and modify its structure/role with props. 
@@ -22,6 +23,12 @@ I intend to write this little summary as the project unfolds so as to record my 
    1. One challenge i see is conditional rendering based on form types (basic data, experience, education)
 5. A better approach would have been to lay out the whole app first in a static manner
 6. Now i need to create 3 comp.s for the CV component
+7. Now comes the part where i need to come up with how to add more sections and how to mod existing data
+   1. Modding:
+      1. 
+   2. Adding section:
+
+---
 ## Process
 1. Create basic page layout with header and footer
 2. Create input component
@@ -29,3 +36,5 @@ I intend to write this little summary as the project unfolds so as to record my 
 4. Experiment with reusable input component and data vis.
 5. Created CV component. Realized i need three more components. 
 6. Created basicCVSection comp. data now shows up from those form fields
+7. Created other sections and gave them a base style
+8. Added buttons that show up on hover
