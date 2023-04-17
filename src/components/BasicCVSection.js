@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
+import { transform } from 'typescript';
 
 export default class BasicCVSection extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      isHovered: false,
+    }
+  }
+
   render() {
     const { data } = this.props;
     const inputData = data.inputStates || '';
@@ -22,7 +31,7 @@ export default class BasicCVSection extends Component {
     }
 
     return (
-      <section className="basic-CV-section">
+      <section onMouseEnter={() => this.setState({isHovered: true})} onMouseLeave={() => this.setState({isHovered: false})} className="basic-CV-section">
         <div className='image'>
           <img src='../../assets/images/P1080192_07.jpg' alt='Applicant portrait'></img>
         </div>
@@ -34,6 +43,10 @@ export default class BasicCVSection extends Component {
           <h3>{basicData.emailAddress}</h3>
           <h3>{basicData.phoneNumber}</h3>
         </div>
+        <div className={this.state.isHovered ? 'buttons' : 'buttons hidden'}>
+          <button>Edit this section</button>
+        </div>
+
       </section>
     );
   }

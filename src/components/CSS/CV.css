@@ -63,6 +63,7 @@
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+
 }
 
 .work-experience-CV-wrapper, .work-experience-CV-wrapper > *, .education-CV-wrapper > * {
@@ -78,6 +79,34 @@
     background-color: aliceblue;
     margin: 1rem;
 }
+.CV-content-section, .basic-CV-section {
+    position: relative;
+
+}
+.content-CV-wrapper .buttons, .basic-CV-section .buttons {
+    grid-area: buttons;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    margin-top: 1rem;
+
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 30%);
+}
+.basic-CV-section .buttons {
+    transform: translate(-50%, 0%);
+}
+.content-CV-wrapper button, .basic-CV-section button {
+
+    padding: 1rem;
+    border: none;
+    margin: .5rem;
+
+}
 
 .CV-content-section {
     width: 100%;
@@ -88,7 +117,8 @@
     grid-template-columns: 1fr 4fr;
     grid-template-areas: 
     'dateColumn contentColumn'
-    'dateColumn contentColumn';
+    'dateColumn contentColumn'
+    'buttons buttons';
     justify-content: center;
     align-content: center;
 }
@@ -106,5 +136,9 @@
 }
 
 .hidden {
-    display: none;
+    display: none !important    ;
+}
+
+button:active {
+    outline: 2px solid wheat;
 }

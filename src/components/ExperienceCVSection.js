@@ -46,7 +46,10 @@ export default class ExperienceCVSection extends Component {
                     <h4>{workData.startOfWork} -</h4>
                     <h4>{workData.finishOfWork}</h4>
                 </div>
-                <button className={this.state.isHovered ? '' : 'hidden'}>Add new section</button>
+                <div className={this.state.isHovered ? 'buttons' : 'buttons hidden'}>
+                    <button>Edit this section</button>
+                    <button>Add new section</button>
+                </div>
             </section>
         )
     }
