@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import image from '../assets/images/P1080192_07.jpg'
 
 export default class BasicCVSection extends Component {
   constructor(props) {
@@ -33,7 +34,7 @@ export default class BasicCVSection extends Component {
     return (
       <section onMouseEnter={() => this.setState({isHovered: true})} onMouseLeave={() => this.setState({isHovered: false})} className="basic-CV-section">
         <div className='image'>
-          <img src='../../assets/images/P1080192_07.jpg' alt='Applicant portrait'></img>
+          <img src={image} alt='Applicant portrait'></img>
         </div>
         <div className='name'>
           <h2>{basicData.firstName}</h2>

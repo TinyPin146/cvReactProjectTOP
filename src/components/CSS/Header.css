@@ -1,11 +1,12 @@
 header {
+    grid-column: span 2;
     height: 3rem;
 
     padding: 1.5rem;
     border-bottom: 5px solid black;
     border-radius: 0 0 10px 10px;
 
-    background: rgb(49, 49, 49);
+    background: rgb(78, 134, 71);
 }
 
 header > h1 {

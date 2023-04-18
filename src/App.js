@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './components/CSS/reset.css'
 import './App.css';
 
 // * Import components
@@ -8,7 +9,6 @@ import Form from './components/Form';
 import CV from './components/CV';
 
 import uniqid from 'uniqid';
-import { element } from 'prop-types';
 
 // * App component
 class App extends Component {
@@ -64,12 +64,7 @@ class App extends Component {
         <main>
           <section className="forms">
             <Form formType="basicDataForm" updateCVState={this.updateState} />
-            {/* <Form formType="workDataForm" updateCVState={this.updateState} /> */}
             {workFormElems.map(element => element)}
-            {/* <Form
-              formType="educationDataForm"
-              updateCVState={this.updateState}
-            /> */}
             {eduFormElems.map(element => element)}
           </section>
           <CV addSection={this.addSection} cvData={cvData} />

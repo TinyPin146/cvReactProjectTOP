@@ -38,12 +38,15 @@ export default class ExperienceCVSection extends Component {
         return (
             <section onMouseEnter={() => this.setState({isHovered: true})} onMouseLeave={() => this.setState({isHovered: false})} className="workExp-CV-section CV-content-section">
                 <div className="content center-column">
-                    <h3>{workData.companyName}</h3>
-                    <h3>{workData.positionTitle}</h3>
+                    <div className="center-column">
+                        <h3>{workData.companyName}</h3>
+                        <h3>{workData.positionTitle}</h3>
+                    </div>
                     <h4>{workData.roleDescription}</h4>
                 </div>
                 <div className="date center-column">
-                    <h4>{workData.startOfWork} -</h4>
+                    <h4>{workData.startOfWork}</h4>
+                    -
                     <h4>{workData.finishOfWork}</h4>
                 </div>
                 <div className={this.state.isHovered ? 'buttons' : 'buttons hidden'}>

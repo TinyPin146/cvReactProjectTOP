@@ -1,20 +1,27 @@
 footer {
-
-    border-top: 3px solid rgb(161, 161, 161);
+    grid-column: span 2;
+    margin-top: 2.5rem;
+    position: relative;
+}
+.footer-wrapper {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    border-top: 3px solid white;
     border-radius: 10px 10px 0 0;
     
-    background: rgb(109, 65, 0);
+    background: rgb(78, 134, 71);
     will-change: display;
+
 }
-
 .footer--toggle-btn {
+    width: 32px;
     margin-bottom: .2rem;
-
-    background: black;
-    border-radius:0 50%;
+    cursor: pointer;
 }
 
 .footer--contact-details {
+    width: 100%;
     margin-top: 1rem;
     padding-bottom: .3rem;
 }
