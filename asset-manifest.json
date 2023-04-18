@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/cvReactProjectTOP/static/css/main.f0a94d43.css",
+    "main.js": "/cvReactProjectTOP/static/js/main.3c0bf1d2.js",
+    "static/media/pexels-nothing-ahead-3571551.jpg": "/cvReactProjectTOP/static/media/pexels-nothing-ahead-3571551.641b361792064d8a2dc7.jpg",
+    "index.html": "/cvReactProjectTOP/index.html",
+    "main.f0a94d43.css.map": "/cvReactProjectTOP/static/css/main.f0a94d43.css.map",
+    "main.3c0bf1d2.js.map": "/cvReactProjectTOP/static/js/main.3c0bf1d2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f0a94d43.css",
+    "static/js/main.3c0bf1d2.js"
+  ]
+}
