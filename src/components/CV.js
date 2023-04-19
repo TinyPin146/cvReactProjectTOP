@@ -54,9 +54,11 @@ class CV extends Component {
         <BasicCVSection  data={basicData || 'No data'} />
         <div className='left-style'></div>
         <div className="content-CV-wrapper">
+          <div className='work-section-header section-header'>Work experience:</div>
           <div className='work-experience-CV-wrapper'>
             {workExperienceSectionElemsArray.map(comp => comp)}
           </div>
+          <div className='education-section-header section-header'>Education experience:</div>
           <div className="education-CV-wrapper">
             {educationSectionElemsArray.map(comp => comp)}
           </div>

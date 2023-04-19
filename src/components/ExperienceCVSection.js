@@ -45,9 +45,9 @@ export default class ExperienceCVSection extends Component {
                     <h4>{workData.roleDescription}</h4>
                 </div>
                 <div className="date center-column">
-                    <h4>{workData.startOfWork}</h4>
-                    -
                     <h4>{workData.finishOfWork}</h4>
+                    -
+                    <h4>{workData.startOfWork}</h4>
                 </div>
                 <div className={this.state.isHovered ? 'buttons' : 'buttons hidden'}>
                     <button onClick={() => {

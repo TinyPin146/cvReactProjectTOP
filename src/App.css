@@ -5,16 +5,17 @@ html {
 }
 
 .wrapper {
+    width: 100%;
     display: grid;
-    grid-template-columns: auto 1fr ;
+    grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr auto;
 }
 
 main {
     box-sizing: border-box;
-    
+    margin: 0.3rem .6rem;
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 350px 1fr;
     justify-items: center;
     align-items: start;
 }

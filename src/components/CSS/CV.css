@@ -2,7 +2,6 @@
     width: 85%;
     height: 1000px;
 
-    margin: .3rem .6rem;
     padding: 1.5rem;
 
     background-image: url(../../assets/images/pexels-nothing-ahead-3571551.jpg);
@@ -153,6 +152,12 @@
 
 .hidden {
     display: none !important    ;
+}
+
+.section-header {
+    width: 95%;
+
+    text-align: left;
 }
 
 button:active {
