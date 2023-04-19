@@ -8,6 +8,15 @@ const BASIC_DATA_FORM_ROLE = 'basicDataForm';
 const EDUCATION_DATA_FORM_ROLE = 'educationDataForm';
 const WORK_DATA_FORM_ROLE = 'workDataForm';
 class CV extends Component {
+  constructor(props) {
+    super(props)
+
+    this.deleteSection = this.deleteSection.bind(this);
+  }
+
+  deleteSection() {
+    console.log('delete section');
+  }
 
   render() {
     const { cvData, addSection } = this.props;
@@ -30,22 +39,22 @@ class CV extends Component {
     // * Creating education comps. based on how many there were
     if (educationDataForms.length > 0) {
       educationSectionElemsArray = educationDataForms.map((eduDataForm, i) => (
-        <EducationCVSection addSection={addSection}  key={i} data={eduDataForm} />
+        <EducationCVSection addSection={addSection} deleteSection={this.deleteSection} key={i} data={eduDataForm} />
       ));
     } else {
       educationSectionElemsArray.push(
-        <EducationCVSection key="nodata" data="No data" />
+        <EducationCVSection addSection={addSection} deleteSection={this.deleteSection} key="nodata" data="No data" />
       );
     }
 
     // * Creating workExp. comps. based on how many there were
     if (workDataForms.length > 0) {
       workExperienceSectionElemsArray = workDataForms.map((workDataForm, i) => (
-        <ExperienceCVSection addSection={() => addSection('work')} key={i} data={workDataForm} />
+        <ExperienceCVSection addSection={addSection} deleteSection={this.deleteSection} key={i} data={workDataForm} />
       ));
     } else {
       workExperienceSectionElemsArray.push(
-        <ExperienceCVSection key="nodata" data="No data" />
+        <ExperienceCVSection addSection={addSection} deleteSection={this.deleteSection} key="nodata" data="No data" />
       );
     }
 

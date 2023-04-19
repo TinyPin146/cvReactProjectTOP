@@ -10,7 +10,7 @@ export default class ExperienceCVSection extends Component {
     }
 
     render() {
-        const { data, addSection } = this.props;
+        const { data, addSection, deleteSection } = this.props;
         const inputData = data.inputStates ? data.inputStates : data;
         const toggleFormVis = data.toggleFormVis;
 
@@ -54,7 +54,8 @@ export default class ExperienceCVSection extends Component {
                         if (!toggleFormVis) return;
                         toggleFormVis();
                     }}>Edit this section</button>
-                    <button onClick={addSection}>Add new section</button>
+                    <button onClick={() => addSection('work')}>Add new section</button>
+                    <button onClick={() => deleteSection('work')}>Delete section</button>
                 </div>
             </section>
         )

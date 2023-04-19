@@ -27,14 +27,16 @@ class App extends Component {
   }
 
   addSection(type) {
-    console.log(`Add ${type} section`);
     if (type === 'education') {
+      if (!this.state.cvData.map(cvDataObj => cvDataObj.role).some(elem => elem === 'educationDataForm')) return;
       this.setState({eduFormElems: [...this.state.eduFormElems, <Form key={uniqid()} formType="educationDataForm" updateCVState={this.updateState}/>]})
     }
     if (type === 'work') {
+      if (!this.state.cvData.map(cvDataObj => cvDataObj.role).some(elem => elem === 'workDataForm')) return;
       this.setState({workFormElems: [...this.state.workFormElems, <Form key={uniqid()} formType="workDataForm" updateCVState={this.updateState} />]})
     } 
   }
+
 
   // * Update CV info state
   updateState(formState) {

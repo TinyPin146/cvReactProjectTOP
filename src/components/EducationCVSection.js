@@ -10,7 +10,7 @@ export default class EducationCVSection extends Component {
   }
 
   render() {
-    const { data, addSection } = this.props;
+    const { data, addSection, deleteSection } = this.props;
     const inputData = data.inputStates ? data.inputStates : data;
     const toggleFormVis = data.toggleFormVis;
 
@@ -48,6 +48,7 @@ export default class EducationCVSection extends Component {
                         toggleFormVis();
                     }}>Edit this section</button>
           <button onClick={() => addSection('education')}>Add new section</button>
+          <button onClick={() => deleteSection('education', this.key)}>Delete section</button>
         </div>
       </section>
     );
