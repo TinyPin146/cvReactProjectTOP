@@ -26,6 +26,7 @@ export default class Form extends Component {
   }
 
   updateFormState(childState) {
+    console.log(childState);
     const { inputStates } = this.state;
     const inputIDs = inputStates.map((input) => input.id);
 
@@ -57,6 +58,7 @@ export default class Form extends Component {
         }}
         className={isHidden ? 'hidden' : ''}
       >
+        <legend>Name and contact information:</legend>
         <Input
           updateFormState={this.updateFormState}
           type="text"
@@ -161,8 +163,7 @@ export default class Form extends Component {
         return workDataForm;
 
       default:
-        console.log('Shit');
-        break;
+        throw new Error('Something is not working')
     }
   }
 }

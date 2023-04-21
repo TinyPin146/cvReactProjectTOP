@@ -14,6 +14,7 @@ class CV extends Component {
     this.deleteSection = this.deleteSection.bind(this);
   }
 
+  // ! Delete section function
   deleteSection() {
     console.log('delete section');
   }
