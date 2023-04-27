@@ -1,33 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import './CSS/Form.css';
-
-import uniqid from 'uniqid';
 
 import Input from './Input';
 
-export default class Form extends Component {
-  constructor(props) {
-    super(props);
+import uniqid from 'uniqid';
 
-    const { formType } = this.props;
+const Form = ({formType, updateCVState}) => {
+  const [id, setId] = useState(uniqid());
+  const [inputStates, setInputStates] = useState([]);
+  const [isHidden, setIsHidden] = useState(false);
 
-    this.state = {
-      inputStates: [],
-      id: uniqid(),
-      role: formType,
-      isHidden: false,
-      toggleFormVis: this.toggleFormVis.bind(this),
-    };
-    this.updateFormState = this.updateFormState.bind(this);
-  }
+ const toggleFormVis = () => {
+  setIsHidden(!!isHidden);
+}
 
-  toggleFormVis() {
-    this.setState({isHidden: !!this.isHidden});
-  }
-
-  updateFormState(childState) {
-    console.log(childState);
-    const { inputStates } = this.state;
+  const updateFormState = (childState) => {
     const inputIDs = inputStates.map((input) => input.id);
 
     // * Updating input state if already exists
@@ -36,134 +23,130 @@ export default class Form extends Component {
         if (state.id === childState.id) return childState;
         return state;
       });
-      this.setState({ inputStates: updatedInputs });
+      setInputStates(updatedInputs)
       return;
     }
 
     // * Adding input if new
-    this.setState({ inputStates: [...inputStates, childState] });
+    setInputStates([...inputStates, childState]);
   }
 
-  render() {
-    const { formType, updateCVState } = this.props;
-    const {isHidden} = this.state;
-    const formState = this.state;
+  const basicDataForm = (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        setIsHidden(true);
+        updateCVState({id, inputStates, role: formType, toggleFormVis});
+      }}
+      className={isHidden ? 'hidden' : ''}
+    >
+      <legend>Name and contact information:</legend>
+      <Input
+        updateFormState={updateFormState}
+        type="text"
+        name="first-name"
+      />
+      <Input
+        updateFormState={updateFormState}
+        type="text"
+        name="last-name"
+      />
+      <Input
+        updateFormState={updateFormState}
+        type="email"
+        name="email-address"
+      />
+      <Input
+        updateFormState={updateFormState}
+        type="tel"
+        name="phone-number"
+      />
+      <button type="submit">Done</button>
+    </form>
+  );
 
-    const basicDataForm = (
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          this.setState({isHidden: true});
-          updateCVState(formState);
-        }}
-        className={isHidden ? 'hidden' : ''}
-      >
-        <legend>Name and contact information:</legend>
-        <Input
-          updateFormState={this.updateFormState}
-          type="text"
-          name="first-name"
-        />
-        <Input
-          updateFormState={this.updateFormState}
-          type="text"
-          name="last-name"
-        />
-        <Input
-          updateFormState={this.updateFormState}
-          type="email"
-          name="email-address"
-        />
-        <Input
-          updateFormState={this.updateFormState}
-          type="tel"
-          name="phone-number"
-        />
-        <button type="submit">Done</button>
-      </form>
-    );
+  const educationDataForm = (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        setIsHidden(true);
+        updateCVState({id, inputStates, role: formType, toggleFormVis});
+      }}
+      className={isHidden ? 'hidden' : ''}
+    >
+      <Input
+        updateFormState={updateFormState}
+        type="text"
+        name="school-name"
+      />
+      <Input
+        updateFormState={updateFormState}
+        type="text"
+        name="title-of-study"
+      />
+      <Input
+        updateFormState={updateFormState}
+        type="number"
+        name="start-of-studies"
+      />
+      <Input
+        updateFormState={updateFormState}
+        type="number"
+        name="finish-of-studies"
+      />
+      <button type="submit">Done</button>
+    </form>
+  );
 
-    const educationDataForm = (
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          this.setState({isHidden: true});
-          updateCVState(formState);
-        }}
-        className={isHidden ? 'hidden' : ''}
-      >
-        <Input
-          updateFormState={this.updateFormState}
-          type="text"
-          name="school-name"
-        />
-        <Input
-          updateFormState={this.updateFormState}
-          type="text"
-          name="title-of-study"
-        />
-        <Input
-          updateFormState={this.updateFormState}
-          type="number"
-          name="start-of-studies"
-        />
-        <Input
-          updateFormState={this.updateFormState}
-          type="number"
-          name="finish-of-studies"
-        />
-        <button type="submit">Done</button>
-      </form>
-    );
+  const workDataForm = (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        setIsHidden(true);
+        updateCVState({id, inputStates, role: formType, toggleFormVis});
+      }}
+      className={isHidden ? 'hidden' : ''}
+    >
+      <Input
+        updateFormState={updateFormState}
+        type="text"
+        name="company-name"
+      />
+      <Input
+        updateFormState={updateFormState}
+        type="text"
+        name="position-title"
+      />
+      <Input
+        updateFormState={updateFormState}
+        type="textarea"
+        name="role-description"
+      />
+      <Input
+        updateFormState={updateFormState}
+        type="number"
+        name="start-of-work"
+      />
+      <Input
+        updateFormState={updateFormState}
+        type="number"
+        name="finish-of-work"
+      />
+      <button type="submit">Done</button>
+    </form>
+  );
 
-    const workDataForm = (
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          this.setState({isHidden: true});
-          updateCVState(formState);
-        }}
-        className={isHidden ? 'hidden' : ''}
-      >
-        <Input
-          updateFormState={this.updateFormState}
-          type="text"
-          name="company-name"
-        />
-        <Input
-          updateFormState={this.updateFormState}
-          type="text"
-          name="position-title"
-        />
-        <Input
-          updateFormState={this.updateFormState}
-          type="textarea"
-          name="role-description"
-        />
-        <Input
-          updateFormState={this.updateFormState}
-          type="number"
-          name="start-of-work"
-        />
-        <Input
-          updateFormState={this.updateFormState}
-          type="number"
-          name="finish-of-work"
-        />
-        <button type="submit">Done</button>
-      </form>
-    );
+  switch (formType) {
+    case 'basicDataForm':
+      return basicDataForm;
+    case 'educationDataForm':
+      return educationDataForm;
+    case 'workDataForm':
+      return workDataForm;
 
-    switch (formType) {
-      case 'basicDataForm':
-        return basicDataForm;
-      case 'educationDataForm':
-        return educationDataForm;
-      case 'workDataForm':
-        return workDataForm;
-
-      default:
-        throw new Error('Something is not working')
-    }
+    default:
+      throw new Error('Something is not working')
   }
 }
+
+export default Form;

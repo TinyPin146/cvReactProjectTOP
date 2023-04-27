@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './components/CSS/reset.css'
+import React, { useState, useEffect } from 'react';
+import './components/CSS/reset.css';  
 import './App.css';
 
 // * Import components
@@ -10,71 +10,58 @@ import CV from './components/CV';
 
 import uniqid from 'uniqid';
 
-// * App component
-class App extends Component {
-  // * Class constructor
-  constructor(props) {
-    super(props);
+const BASIC_DATA_FORM_ROLE = 'basicDataForm';
+const EDUCATION_DATA_FORM_ROLE = 'educationDataForm';
+const WORK_DATA_FORM_ROLE = 'workDataForm';
 
-    this.addSection = this.addSection.bind(this);
-    this.updateState = this.updateState.bind(this);
+export default function App() {
+  const [cvData, setCvData] = useState([]);
+  const [workFormElems, setWorkFormElems] = useState([<Form key={uniqid()} formType="workDataForm" updateCVState={updateState} />])
+  const [eduFormElems, setEduFormElems] = useState([<Form key={uniqid()} formType="educationDataForm" updateCVState={updateState}/>])
 
-    this.state = {
-      cvData: [],
-      workFormElems: [<Form key={uniqid()} formType="workDataForm" updateCVState={this.updateState} />],
-      eduFormElems: [<Form key={uniqid()} formType="educationDataForm" updateCVState={this.updateState}/>],
-    };
-  }
 
-  addSection(type) {
+  function addSection(type) {
     if (type === 'education') {
-      if (!this.state.cvData.map(cvDataObj => cvDataObj.role).some(elem => elem === 'educationDataForm')) return;
-      this.setState({eduFormElems: [...this.state.eduFormElems, <Form key={uniqid()} formType="educationDataForm" updateCVState={this.updateState}/>]})
+      if (!cvData.map(cvDataObj => cvDataObj.role).some(elem => elem === 'educationDataForm')) return;
+      setEduFormElems([...eduFormElems, <Form key={uniqid()} formType="educationDataForm" updateCVState={updateState}/>])
     }
     if (type === 'work') {
-      if (!this.state.cvData.map(cvDataObj => cvDataObj.role).some(elem => elem === 'workDataForm')) return;
-      this.setState({workFormElems: [...this.state.workFormElems, <Form key={uniqid()} formType="workDataForm" updateCVState={this.updateState} />]})
+      if (!cvData.map(cvDataObj => cvDataObj.role).some(elem => elem === 'workDataForm')) return;
+      setWorkFormElems([...workFormElems, <Form key={uniqid()} formType="workDataForm" updateCVState={updateState} />])
     } 
   }
 
+  function updateState(formState) {
+    setCvData(prevCvData => {
+      const formIDs = prevCvData.map((cvForm) => cvForm.id);
 
-  // * Update CV info state
-  updateState(formState) {
-    const { cvData: cvDataStates } = this.state;
-    const formIDs = cvDataStates.map((cvForm) => cvForm.id);
-
-    if (formIDs.includes(formState.id)) {
-      const updatedCVData = cvDataStates.map((cvForm) => {
-        if (cvForm.id === formState.id) return formState;
-        return cvForm;
-      });
-      this.setState({ cvData: updatedCVData });
-      return;
-    }
-
-    this.setState({ cvData: [...cvDataStates, formState] });
+      if (formIDs.includes(formState.id)) {
+        const updateCVData = prevCvData.map(cvForm => {
+          if (cvForm.id === formState.id) return formState;
+          return cvForm;
+        })
+        return updateCVData;
+      }
+      return [...prevCvData, formState]
+    });
   }
 
-
-  render() {
-    const { cvData, eduFormElems, workFormElems } = this.state;
-
-
-    return (
-      <div className="wrapper">
-        <Header />
-        <main>
-          <section className="forms">
-            <Form formType="basicDataForm" updateCVState={this.updateState} />
-            {workFormElems.map(element => element)}
-            {eduFormElems.map(element => element)}
-          </section>
-          <CV addSection={this.addSection} cvData={cvData} />
-        </main>
-        <Footer />
-      </div>
-    );
-  }
+  return (
+    <div className="wrapper">
+      <Header />
+      <main>
+        <section className="forms">
+          <Form formType="basicDataForm" updateCVState={updateState.bind(this)} />
+          {workFormElems.map(element => element)}
+          {eduFormElems.map(element => element)}
+        </section>
+        <CV addSection={addSection}
+        cvData={cvData}
+        cvDataBasic={cvData.filter(cvDataForm => cvDataForm.role === BASIC_DATA_FORM_ROLE)}
+        cvDataEducation={cvData.filter(cvDataForm => cvDataForm.role === EDUCATION_DATA_FORM_ROLE)} 
+        cvDataWork={cvData.filter(cvDataForm => cvDataForm.role === WORK_DATA_FORM_ROLE)}/>
+      </main>
+      <Footer />
+    </div>
+  );
 }
-
-export default App;
